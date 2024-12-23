@@ -1,59 +1,38 @@
-<<<<<<< HEAD
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-=======
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-
-
-import{About,HomeLayout,Error,Landing,Cocktail,NewsLetter} from './components/Pages/Index'
-
- const router=createBrowserRouter(
-  [
-    {
-      path:"/",
-      element:<HomeLayout/>
-
-    },
-    {
-      path:"/About",
-      element:<About/>
-
-    },
-  ]
- )
-
-
->>>>>>> b5bc1d46559fc0fd3715d8aa84d2657e5ef8e1a3
-
-
 import {
   About,
   HomeLayout,
-  
-  Error,
   Landing,
+  Error,
   Cocktail,
   NewsLetter,
+  SinglePageError
 } from "./components/Pages/Index";
+import { Loader as loadingLoader } from "./components/Pages/Landing";
 
 const router = createBrowserRouter([
   {
+    
     path: "/",
     element: <HomeLayout />,
+    errorElement: <Error />, // This handles errors for the parent route
     children: [
       {
-        index: true,
+        index: true, // This makes the Landing page the default child route
         element: <Landing />,
+        errorElement:<SinglePageError/>,
+        loader: loadingLoader,
       },
       {
-        path: "Cocktail",
+        path: "cocktail/:id",
         element: <Cocktail />,
       },
       {
-        path: "Newsletter",
+        path: "newsletter",
         element: <NewsLetter />,
       },
       {
-        path: "About",
+        path: "about",
         element: <About />,
         children: [
           {
@@ -61,7 +40,7 @@ const router = createBrowserRouter([
             element: <h2>Our Company</h2>,
           },
           {
-            path: "Person",
+            path: "person",
             element: <h2>John Doe</h2>,
           },
         ],
@@ -74,12 +53,4 @@ const App = () => {
   return <RouterProvider router={router} />;
 };
 
-<<<<<<< HEAD
 export default App;
-=======
-return <RouterProvider router={router}/>
-  
-}
-
-export default App
->>>>>>> b5bc1d46559fc0fd3715d8aa84d2657e5ef8e1a3

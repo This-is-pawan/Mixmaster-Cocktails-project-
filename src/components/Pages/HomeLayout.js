@@ -6,7 +6,7 @@ const HomeLayout = () => {
   return (
     <>
    <Navbar/>
-     <Outlet/>
+   <Outlet/>
      
     </>
   )
