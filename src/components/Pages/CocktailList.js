@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useOutlet } from 'react-router-dom';
 
 const CocktailList = ({ drinks }) => {
   // console.log(drinks);
+const data=useOutlet()
+console.log(data);
 
   if (!drinks || drinks.length === 0) {
     return <h4 style={{ textAlign: 'center' }}>No matching results found...</h4>;
